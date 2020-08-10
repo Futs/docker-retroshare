@@ -1,5 +1,5 @@
-FROM debian:stretch-slim
-MAINTAINER KALRONG <xrb@kalrong.net>
+FROM debian:buster-slim
+LABEL key="Futs <futslab.co.za>" 
 
 ENV MODE nogui-web
 ENV DEBIAN_FRONTEND noninteractive
@@ -9,11 +9,11 @@ ENV I2P_DIR /usr/share/i2p
 
 RUN apt-get update && apt-get -y install wget gnupg2 curl
 
-RUN echo 'deb http://download.opensuse.org/repositories/network:/retroshare/Debian_9.0/ /' >> /etc/apt/sources.list.d/retroshare.list
+RUN echo 'deb https://download.opensuse.org/repositories/network:/retroshare/xUbuntu_20.04/ /' >> /etc/apt/sources.list.d/retroshare.list
 
-RUN wget -qO - http://download.opensuse.org/repositories/network:retroshare/Debian_9.0/Release.key | apt-key add - 
+RUN wget -qO - https://download.opensuse.org/repositories/network:/retroshare/xUbuntu_20.04/Release.key | apt-key add - 
 
-RUN echo "deb http://deb.i2p2.no/ stretch main" > /etc/apt/sources.list.d/i2p.list
+RUN echo "deb https://deb.i2p2.no/ stretch main" > /etc/apt/sources.list.d/i2p.list
 
 RUN curl -o i2p-debian-repo.key.asc https://geti2p.net/_static/i2p-debian-repo.key.asc && apt-key add i2p-debian-repo.key.asc
 
